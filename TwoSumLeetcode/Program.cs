@@ -7,20 +7,21 @@
 
 int[] TwoSum(int[] nums, int target)
 {
-    IDictionary<int, int> result = new Dictionary<int, int>();
+       IDictionary<int, int> result = new Dictionary<int, int>();
     int[] output = new int[2];
-    for(int i = nums.GetLowerBound(0); i <= nums.GetUpperBound(0); i++)
+    for(int i = 0; i <= nums.Length; i++)
     {
-        var firstValue = nums[i];
-        var secondValue = nums.ElementAtOrDefault(i + 1);
-       
-        if ((firstValue + secondValue) == target)
+        for (int j = i + 1; j < nums.Length; j++) 
         {
-            result.Add(firstValue, secondValue);
+            var firstValue = nums[i];
+            var secondValue = nums[j];
 
+            if ((firstValue + secondValue) == target)
+            {
+                result.Add(i,j);
+
+            }
         }
-       
-            
     }
 
     foreach (KeyValuePair<int,int> kvp in result) 
